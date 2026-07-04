@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo App</title>
+    </head>
+<style>
+    body{
+        font-family: Arial,  sans-serif;
+        background: lightgray;
+    }
+    .container{
+    width:350px;
+    margin:100px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+input{
+    width:220px;
+    padding:10px;
+    border:1px solid gray;
+    border-radius:5px;
+}
+#btn{
+    padding:10px 15px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+#btn:hover{
+    background-color:beige;
+    color: black;
+}
+.Done{
+     width: 60px;
+     margin-right: 20px;
+     margin-left: 20px;
+     background-color: green;
+     color: white;
+     border-radius: 5px;
+}
+.delete{
+ width: 60px;
+     margin-right: 2px;
+     margin-left: 2px;
+     background-color: red;
+     color: black;
+     border-radius: 5px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+</style>
+
+<body>
+
+<div class="container">
+    <h2>Todo List</h2>
+<input type="text" id="todo" placeholder="Enter the language">
+<button id="btn">Add</button>
+<ol id="u"></ol>
+</div>
+<script>
+    var a = document.querySelector("#todo")
+    var bt = document.getElementById("btn")
+    var c = document.getElementById("u")
+   
+    bt.addEventListener("click",function(){
+       console.log(a.value);
+       var li = document.createElement("li");
+        var d = document.createElement("button")
+       li.textContent = a.value;
+       c.appendChild(li);
+   
+       d.textContent = "Done";
+       d.className = "Done";
+
+       li.append(d)
+       d.addEventListener("click",function(){
+            li.style.textDecoration = "line-through";
+       })
+       var delt = document.createElement("button");
+       delt.textContent="Delete";
+       delt.className = "delete";
+       li.append(delt)
+       
+
+       delt.addEventListener("click",function(){
+        li.remove()
+       })
+
+       localStorage.setItem("task",a.value)
+           a.value = "";
+        
+
+
+    })
+</script>
+</body>
+</html>
